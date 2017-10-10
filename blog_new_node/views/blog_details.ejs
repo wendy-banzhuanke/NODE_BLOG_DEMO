@@ -1,0 +1,154 @@
+<% include header.ejs %>
+
+
+<!--中间内容区域-->
+<div class="container detail">
+    <div class="comment-tip-success-fiexd">评论成功</div>
+    <input type="hidden" value="<%= blogDetails[0].id %>" id="detail_blog_id">
+    <div class="wrap">
+        <h1 class="title"><%= blogDetails[0].blog_name %></h1>
+        <div class="author">
+            <a href="#"><img src="/images/author01.jpg"/></a>
+            <span class="time"><%= moment(blogDetails[0].blog_time).format('YYYY-MM-DD hh:mm:ss') %></span>
+            <span class="read">阅读:<em id="blog_look"><%= blogDetails[0].blog_look%></em></span>
+            <span class="read">评论:<em id="blog_comment"><%= blogDetails[0].blog_comment%></em></span>
+            <span class="read">喜欢:<em id="blog_zan_num"><%= blogDetails[0].blog_zan%></em></span>
+        </div>
+        <div class="show-content">
+            <%- blogDetails[0].blog_context %>
+        </div>
+        <p class="callme">每周六18点左右发文，欢迎交流。如需转载：请注明出。如有问题请邮件<a target="_blank" href="/contactme/">联系我</a>。</p>
+        <div class="like-share clearfix">
+            <div class="like-group fl">
+                <a href="javascript:;" onclick="blogZan($(this))">
+                    <p class="zannum"></p>
+                    <span><i  class="fa fa-heart-o" aria-hidden="true"></i><i class="word">喜欢</i></span>
+                    <em class="blog-zan-num"><%= blogDetails[0].blog_zan%></em>
+                </a>
+            </div>
+            <!--<div class="share-group fr">
+                &lt;!&ndash;微信&ndash;&gt;
+                <a href="#"><i  class="fa fa-heart" aria-hidden="true"></i></a>
+                &lt;!&ndash;微博&ndash;&gt;
+                <a href="#"><i  class="fa fa-heart" aria-hidden="true"></i></a>
+                &lt;!&ndash;下载长图片&ndash;&gt;
+                <a href="#"><i  class="fa fa-heart" aria-hidden="true"></i></a>
+                &lt;!&ndash;qq空间&ndash;&gt;
+                <a href="#"><i  class="fa fa-heart" aria-hidden="true"></i></a>
+            </div>-->
+        </div>
+        <div class="write-comment">
+            <h2>发表评论</h2>
+            <div class="send-comment">
+                <div class="input-group">
+                    <label for="wrap0_email">我的邮箱:</label>
+                    <input id="wrap0_email" type="text"/>
+                    <span class="format-tip-email0"></span>
+                </div>
+                <div class="input-group">
+                    <label for="wrap0_petname">我的昵称:</label>
+                    <input id="wrap0_petname" type="text"/>
+                    <span class="format-tip-petname0"></span>
+                </div>
+                <div class="input-group">
+                    <label for="wrap0_context">内容:</label>
+                    <textarea id="wrap0_context"></textarea>
+                    <span class="format-tip-context0"></span>
+                </div>
+            </div>
+            <div class="submit-btn">
+                <a href="javascript:;" onclick="resetAnswerComment();">取 消</a>
+                <a href="javascript:;" onclick="publishAnswerComment();">发 送</a>
+            </div>
+        </div>
+        <div class="list-comment">
+            <h2>查看评论</h2>
+            <div class="comment-all">
+                <ul  class="comment-ul">
+                    <% blogComment.forEach(function (bcres,index) {%>
+                        <% if(bcres.parent_id == 0) {%>
+                            <li class="comment-li">
+                                <div class="comment-parent">
+                                    <div class="comment-person">
+                                        <dl class="clearfix">
+                                            <dt class="fl">
+                                                <a href="#"><img src="/images/timg.jpg"/></a>
+                                            </dt>
+                                            <dd class="name">
+                                                <span><%=bcres.man_petname%></span>
+                                            </dd>
+                                            <dd class="time">
+                                                <span><%= moment(bcres.comment_time).format('YYYY-MM-DD hh:mm:ss') %></span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <p>
+                                        <%= bcres.man_context%>
+                                    </p>
+                                    <div class="tool-btn">
+                                        <a href="javascript:;" class="answer-edit-btn" onclick="answerCommentClick($(this),'<%=bcres.comment_id %>','<%=bcres.man_petname %>','<%=bcres.comment_id %>');"><i class="fa fa-edit"></i>回复</a>
+                                    </div>
+                                </div>
+                                <div class="comment-sub-list comment-answer-wrap">
+                                    <% blogCommentSub.forEach(function (bcres_sub,index) {%>
+                                    <% if(bcres_sub.parent_id == bcres.comment_id ){ %>
+                                    <div class="comment-sub">
+                                        <p>
+                                            <a href="#"><%=bcres_sub.man_petname %>:</a>
+                                            <span><a href="/users/6bc676efa44a" class="maleskine-author" target="_blank" data-user-slug="6bc676efa44a">@<%=bcres_sub.bycritic %></a>&nbsp;<%=bcres_sub.man_context%></span>
+                                        </p>
+                                        <div class="sub-tool-btn">
+                                            <span><%= moment(bcres_sub.comment_time).format('YYYY-MM-DD hh:mm:ss')  %></span>
+                                            <a href="javascript:;" class="answer-edit-btn"  onclick="answerCommentClick($(this),'<%=bcres.comment_id %>','<%=bcres_sub.man_petname %>','<%=bcres_sub.comment_id %>');"><i class="fa fa-edit"></i>回复</a>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                    <% }) %>
+
+                                </div>
+                            </li>
+                        <% } %>
+                    <%})%>
+                    <!--<li>
+                        <div class="comment-parent">
+                            <div class="comment-person">
+                                <dl class="clearfix">
+                                    <dt class="fl">
+                                        <a href="#"><img src="images/tbbanner01.jpg"/></a>
+                                    </dt>
+                                    <dd class="name">
+                                        <span>大飞随笔</span>
+                                    </dd>
+                                    <dd class="time">
+                                        <span>2017.02.27 09:15</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <p>
+                                我也看过罗辑思维，但是我最近对道德绑架这个词有了新的认识，不知道作者有没有思考过，为什么会有道德的存在，而且从古至今都有？人类的社会需要道德维持，而且这也是人们彰显自己存在价值的方式，也就是说，你是有追求道德的强烈动机。追逐利益是人的本性，同样追求更高的道德也是人的本性，这两个处在微妙的博弈中，远非一个简单的道德绑架可以说清楚。单纯的以经济学观点看世界，会很狭隘
+                            </p>
+                            <div class="tool-btn">
+                                <a href="#"><i class="fa fa-edit"></i>回复</a>
+                            </div>
+                        </div>
+                        <div class="comment-sub-list">
+                            <div class="comment-sub">
+                                <p>
+                                    <a href="#">你先走:</a>
+                                    <span><span><a href="/users/6bc676efa44a" class="maleskine-author" target="_blank" data-user-slug="6bc676efa44a">@大飞随笔</a> 很好，看得出来回复很有深度。我认为，作者也说了道德是想像中的情况，我们需要研究实际情况；还有，人做事的动机之一就是道德动机，人具体如何决策，是衡量多个动机之后的决定。文中所提的是以经济学的眼光去看问题，并非局限于经济领域看问题。</span></span>
+                                </p>
+                                <div class="sub-tool-btn">
+                                    <span>2017.02.27 09:40</span>
+                                    <a href="#"><i class="fa fa-edit"></i>回复</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include footer.ejs %>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>发布博文</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="/stylesheets/reset.css" type="text/css" rel="stylesheet"/>
+    <link href="/stylesheets/font-awesome.min.css" type="text/css" rel="stylesheet"/>
+    <link href="/stylesheets/manage.css" type="text/css" rel="stylesheet">
+
+    <script type="text/javascript" charset="utf-8" src="libs/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="libs/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script language="javascript" type="text/javascript" src="/javascripts/My97DatePicker/WdatePicker.js"></script>
+
+</head>
+<body>
+<div class="top wrap clearfix">
+    <span class="year area-left">2016年12月26日 乙未年十月初八</span>
+    <span class="time area-right">pm 12:06</span>
+</div>
+<div class="header wrap">
+
+</div>
+<div class="container wrap clearfix">
+    <div class="leftmenu area-left">
+        <ul>
+            <li class="clearfix"><i class="fa fa-list-alt area-left"></i><a class="area-right" href="javascript:;">博文列表</a></li>
+            <li class="clearfix"><i class="fa fa-edit area-left"></i><a href="javascript:;">发布博文</a></li>
+        </ul>
+    </div>
+    <div class="center area-right">
+        <div class="title"><i>博文管理</i> &gt;&gt; 发布博文</div>
+        <div class="article">
+            <form action="/post/addblog" method="post">
+                <ul>
+                    <li class="group clearfix">
+                        <label class="area-left"  for="blog_type">博客类别：</label>
+                        <select class="area-left" name="blog_type"  id="blog_type">
+                            <option value="1">CSS3</option>
+                            <option value="2">HTML5</option>
+                            <option value="3">JavaScript</option>
+                            <option value="4">NodeJs</option>
+                            <option value="5">MySql</option>
+                            <option value="6">JQuery</option>
+                            <option value="7">Zepto</option>
+                            <option value="8">SVN</option>
+                            <option value="9">Git</option>
+                            <option value="10">Chart</option>
+                        </select>
+                    </li>
+                    <li class="group clearfix">
+                        <label class="area-left" for="title">博客标题：</label>
+                        <input class="area-left" name="blog_name"   id="title" type="text"/>
+                    </li>
+                    <li class="group clearfix">
+                        <label class="area-left"  for="son_title">作者名称：</label>
+                        <input class="area-left" name="blog_author"   id="son_title" type="text"/>
+                    </li>
+                    <li class="group clearfix">
+                        <label class="area-left"  for="publish_time">发布日期：</label>
+                        <input class="Wdate area-left" type="text" name="blog_time"  id="publish_time"  onClick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2012-02-02 11:30:00'})">
+                    </li>
+                    <li class="group clearfix">
+                        <label class="area-left"  for="blog_context">博客内容：</label>
+                        <script class="area-left"  name="blog_context"   id="blog_context" type="text/plain" style="width:700px;height:500px;"></script>
+                    </li>
+                </ul>
+                <div class="btn-group wrap">
+                    <input type="submit" class="btn btn-publish" value="确认发布">
+                    <input type="button" class="btn btn-back"  value="返回"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<div class="footer">
+
+</div>
+<script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor( 'blog_context', {
+
+        autoHeightEnabled: true,
+
+        autoFloatEnabled: true,
+
+        initialFrameWidth: 700,
+
+        initialFrameHeight:483
+
+    });
+</script>
+</body>
+</html>

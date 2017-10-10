@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title %></title>
+    <meta name="description" content="Wendy的技术博文">
+    <meta name="keywords" content="技术博客,个人博客,zj_13983777,Wendy,web前端">
+    <meta name="author" content="Wendy">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!--下面两行代码就可以告诉浏览器使用wangyi.ico 作为home.html的图标了-->
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    <link href="/stylesheets/reset.css" rel="stylesheet"/>
+    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/stylesheets/blog.css" rel="stylesheet">
+</head>
+<body>
+<!--全局顶部导航-->
+<nav class="top-nav nav-default nav-fiexd-top clearfix">
+    <h1 class="fl"><a href="/">Wendy's Blog</a></h1>
+    <!--<div class="swith-theme fr">主题切换</div>-->
+    <div class="container">
+        <ul>
+            <li><a href="/" class="active">首页</a></li>
+            <!--<li><a href="javascript:;">关于我</a></li>-->
+            <li><a target="_blank" href="/contactme/">发邮件</a></li>
+            <li class="search">
+                <form target="_blank" action="/blog/search/" accept-charset="UTF-8" method="get" id="search_form">
+                    <!-- <input name="utf8" type="hidden" value="✓">-->
+                    <input type="text" name="q" id="q" value="<%  if (typeof searchText !== 'undefined' ){%><%=searchText%><%}else{%><%}%>" placeholder="搜索" class="search-input">
+                    <a class="search-btn " href="javascript:document:search_form.submit();"><i class="fa fa-search"></i></a>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+<script type="text/javascript" src="/javascripts/shCore.js"></script>
+<script type="text/javascript" src="/javascripts/shBrushJScript.js"></script>
+<link type="text/css" rel="stylesheet" href="/stylesheets/shCoreFadeToGrey.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>

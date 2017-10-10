@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="template.js"></script>
+	<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+</head> 
+<body>
+	<div id="header11">
+	</div>
+    <div id="container"></div>
+</body>
+
+
+
+<script id="demo" type="text/html">
+{{if isAdmin}}
+	<div id="nav">
+		<div class="menu-main">
+			{{each list as value i}}
+				<li class="nav-menu"><a href="javascript:void(0);">{{i}}</a></li>
+			{{/each}}
+		</div>
+	</div>
+	<div class="sub-nav">
+		{{each list as value i}}
+			<ul class="sub-nav-items">
+				{{each list[i] as value j}}
+					<li class="nav-item"><a href="javascript:void(0);">{{j}}</a></li>
+				{{/each}}
+			</ul>
+		{{/each}}
+    </div>
+    <div class="filter-content">
+    	<div class="filter-section">
+    		{{each list as value i}}
+    			{{each list[i] as value j}}
+    				<div class="filter-list">
+    				{{each list[i][j] as value k}}
+    					<a href="javascript:void(0);" class="filter-sel">{{value}}</a>
+    				{{/each}}
+    				</div>
+    			{{/each}}
+    		{{/each}}
+    	</div>
+    </div>
+{{/if}}
+</script>
+
+<script>
+var data = {
+	isAdmin: true,
+	list : {
+		"电视" : {
+            "大陆剧" : ["好大一个家","平凡的世界","收获的季节","刘老根","乡村爱情","士兵突击","神探狄仁杰","武媚娘传奇"],
+            "美剧" : ["吸血鬼日记","闪电侠","行尸走肉","童话镇","破产姐妹","格林"],
+            "台剧" : ["有爱一家人","再见阿郎","我的宝贝四千金","新白娘子传奇"],
+            "韩剧" : ["来自星星的你","匹诺曹","奔跑吧玫瑰","美女的诞生","未来的选择",],
+	    },
+	    "电影" : {
+	        "动作" : ["A计划","警察故事","黄飞鸿","特务迷城","卧虎藏龙","逗你玩"],
+	        "爱情" : ["保定爱情","山楂树之恋","北京遇上西雅图"],
+	        "恐怖" : ["僵尸家族","驱鬼警察","僵尸道长"]
+	    },
+	    "综艺" : {
+	        "百变大咖秀" : ["第一期","第二期","第二期","第四期"],
+	        "快乐大本营" : ["谢娜","何炅","维嘉","杜海涛","吴昕"],
+	        "天天向上" : ["汪涵","欧弟","田园","钱枫","小五"],
+	        "康熙来了" : ["小S","蔡康永","赵薇","萧敬腾","阿雅","吴宗宪"]
+	    }
+	}
+}
+
+
+var html = template('demo', data);
+document.getElementById('container').innerHTML = html;
+//注册tabs方法
+$(document).on('click','a',function(e){
+	var target  = $(e.currentTarget).parent();
+	var $self = $(target);
+	if (target.hasClass("nav-menu")) {
+		$(".filter-list").hide();
+		$(".sub-nav-items").hide().eq($self.index()).show();
+	}else if(target.hasClass("nav-item")) {
+		$(".filter-list").hide().eq($(".nav-item").index($self)).show();
+	}
+})
+
+
+	window.onload = function () {
+		var data = [{"name":"zj","products":[{"2name":"zj"},{"2name":"fyb"}]}];
+
+
+		console.log(data);
+		data[0].selected = false;
+		console.log(data);
+
+
+		var pdMap = {};
+		var productList = [];
+		productList.push({"name":"zj"});
+		pdMap = {"productList":productList};
+		console.log(pdMap);
+
+
+
+
+		doQuery('get', 'cartst', null, function (d) {
+			var carts = d.data.productList, pdMap = d.data.productList, pd,productList=[];
+
+			//合计
+			if (pdMap) {
+				for (var i = 0; i < carts.length; i++) {
+					for (var j = 0; j < carts[i].products.length; j++) {
+						pd = carts[i].products[j];
+						pd.currencyShow = config.currency(pd.currency);
+						//pdMap[pd.cid] = pd;
+						if ("textCon" in pd) {
+							pd.textCon = JSON.parse(pd.textCon);
+							if ('maxAvailable' in pd.textCon) {
+								pd.textCon.maxAvailable = parseInt(pd.textCon.maxAvailable);
+								if (pd.textCon.maxAvailable > 0 && pd.pNum > pd.textCon.maxAvailable) {
+									pd.pNum = pd.textCon.maxAvailable;
+								}
+							}
+						}
+						carts[i].products[j] = pd;
+						productList.push(carts[i].products[j]);
+					}
+
+				}
+				pdMap = {"productList":productList};
+
+			}
+			d.data.pdMap = pdMap;
+			success(d);
+		}, error);
+
+
+	}
+</script>
+<script src="1111.js" type="text/javascript"></script>
+<script src="header.js"></script>
+
+</html>

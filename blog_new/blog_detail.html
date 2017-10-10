@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>博客文字详情</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="style/reset.css" rel="stylesheet"/>
+    <link href="style/font-awesome.min.css" rel="stylesheet"/>
+    <link href="style/blog.css" rel="stylesheet">
+</head>
+<body>
+    <!--全局顶部导航-->
+    <nav class="top-nav nav-default nav-fiexd-top clearfix">
+        <h1 class="fl"><a href="#">Wendy's Blog</a></h1>
+        <div class="swith-theme fr">主题切换</div>
+        <div class="container">
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">关于我</a></li>
+                <li><a href="#">发邮件</a></li>
+                <li class="search">
+                    <form target="_blank" action="/search" accept-charset="UTF-8" method="get">
+                       <!-- <input name="utf8" type="hidden" value="✓">-->
+                        <input type="text" name="q" id="q" value="" placeholder="搜索" class="search-input">
+                        <a class="search-btn " href="javascript:void(null)"><i class="fa fa-search"></i></a>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--中间内容区域-->
+    <div class="container detail">
+        <div class="wrap">
+            <h1 class="title">这是文章标题</h1>
+            <div class="author">
+                <a href="#"><img src="images/tbbanner01.jpg"/></a>
+                <span class="time">2017.02.23 23:59</span>
+                <span class="read">阅读:<em>14343</em></span>
+                <span class="read">评论:<em>2321</em></span>
+                <span class="read">喜欢:<em>123</em></span>
+            </div>
+            <div class="show-content">
+            </div>
+            <p class="callme">不出意外的话之后会每天19点左右发文，欢迎交流。关于转载问题：请统一简信<a href="#">联系我</a>。</p>
+            <div class="like-share clearfix">
+                <div class="like-group fl">
+                    <a href="#">
+                        <span><i  class="fa fa-heart" aria-hidden="true"></i>喜欢</span>
+                        <em>128</em>
+                    </a>
+                </div>
+                <!--<div class="share-group fr">
+                    &lt;!&ndash;微信&ndash;&gt;
+                    <a href="#"><i  class="fa fa-heart" aria-hidden="true"></i></a>
+                    &lt;!&ndash;微博&ndash;&gt;
+                    <a href="#"><i  class="fa fa-heart" aria-hidden="true"></i></a>
+                    &lt;!&ndash;下载长图片&ndash;&gt;
+                    <a href="#"><i  class="fa fa-heart" aria-hidden="true"></i></a>
+                    &lt;!&ndash;qq空间&ndash;&gt;
+                    <a href="#"><i  class="fa fa-heart" aria-hidden="true"></i></a>
+                </div>-->
+            </div>
+            <div class="write-comment">
+                <h2>发表评论</h2>
+                <div class="send-comment">
+                    <div class="input-group">
+                        <label>我的邮箱:</label>
+                        <input type="text"/>
+                    </div>
+                    <div class="input-group">
+                        <label>我的昵称:</label>
+                        <input type="text"/>
+                    </div>
+                    <div class="input-group">
+                        <label>内容:</label>
+                        <textarea></textarea>
+                    </div>
+                </div>
+                <div class="submit-btn">
+                    <input type="reset" value="取 消"/>
+                    <input type="submit" value="发 送"/>
+                </div>
+            </div>
+            <div class="list-comment">
+                <h2>查看评论</h2>
+                <div class="comment-all">
+                    <ul>
+                        <li>
+                            <div class="comment-parent">
+                                <div class="comment-person">
+                                    <dl class="clearfix">
+                                        <dt class="fl">
+                                            <a href="#"><img src="images/tbbanner01.jpg"/></a>
+                                        </dt>
+                                        <dd class="name">
+                                            <span>大飞随笔</span>
+                                        </dd>
+                                        <dd class="time">
+                                            <span>2017.02.27 09:15</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <p>
+                                    我也看过罗辑思维，但是我最近对道德绑架这个词有了新的认识，不知道作者有没有思考过，为什么会有道德的存在，而且从古至今都有？人类的社会需要道德维持，而且这也是人们彰显自己存在价值的方式，也就是说，你是有追求道德的强烈动机。追逐利益是人的本性，同样追求更高的道德也是人的本性，这两个处在微妙的博弈中，远非一个简单的道德绑架可以说清楚。单纯的以经济学观点看世界，会很狭隘
+                                </p>
+                                <div class="tool-btn">
+                                    <a href="javascript:;"><i class="fa fa-edit"></i>回复</a>
+                                </div>
+                                <!--<div class="comment-wrap-1 comment-wrap">
+                                    <form>
+                                        <div class="comment-person">
+                                            <label for="wrap1_email">我的邮箱:</label><input id="wrap1_email" type="text" placeholder="我的邮箱"/>
+                                            <label for="wrap1_petname">我的昵称:</label><input id="wrap1_petname" type="text" placeholder="我的昵称"/>
+                                        </div>
+                                        <div class="comment-text">
+                                            <textarea  placeholder="我的评论"></textarea>
+                                        </div>
+                                        <div class="comment-btn">
+                                            <a href="javascript:;">取 消</a>
+                                            <a href="javascript:;">提 交</a>
+                                        </div>
+                                    </form>
+                                </div>-->
+                            </div>
+
+                            <div class="comment-sub-list">
+                                <div class="comment-sub">
+                                    <p>
+                                        <a href="#">你先走:</a>
+                                        <span><a href="/users/6bc676efa44a" class="maleskine-author" target="_blank" data-user-slug="6bc676efa44a">@大飞随笔</a> 很好，看得出来回复很有深度。我认为，作者也说了道德是想像中的情况，我们需要研究实际情况；还有，人做事的动机之一就是道德动机，人具体如何决策，是衡量多个动机之后的决定。文中所提的是以经济学的眼光去看问题，并非局限于经济领域看问题。</span>
+                                    </p>
+                                    <div class="sub-tool-btn">
+                                        <span>2017.02.27 09:40</span>
+                                        <a href="#"><i class="fa fa-edit"></i>回复</a>
+                                    </div>
+                                </div>
+                                <div class="comment-sub">
+                                    <p>
+                                        <a href="#">你先走:</a>
+                                        <span><a href="/users/6bc676efa44a" class="maleskine-author" target="_blank" data-user-slug="6bc676efa44a">@大飞随笔</a> 很好，看得出来回复很有深度。我认为，作者也说了道德是想像中的情况，我们需要研究实际情况；还有，人做事的动机之一就是道德动机，人具体如何决策，是衡量多个动机之后的决定。文中所提的是以经济学的眼光去看问题，并非局限于经济领域看问题。</span>
+                                    </p>
+                                    <div class="sub-tool-btn">
+                                        <span>2017.02.27 09:40</span>
+                                        <a href="#"><i class="fa fa-edit"></i>回复</a>
+                                    </div>
+                                </div>
+                                <div class="comment-wrap-1 comment-wrap">
+                                    <form>
+                                        <div class="comment-person">
+                                            <label for="wrap1_email">我的邮箱:</label><input id="wrap1_email" type="text" placeholder="我的邮箱"/>
+                                            <label for="wrap1_petname">我的昵称:</label><input id="wrap1_petname" type="text" placeholder="我的昵称"/>
+                                        </div>
+                                        <div class="comment-text">
+                                            <textarea  placeholder="我的评论"></textarea>
+                                        </div>
+                                        <div class="comment-btn">
+                                            <a href="javascript:;">取 消</a>
+                                            <a href="javascript:;">提 交</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="comment-parent">
+                                <div class="comment-person">
+                                    <dl class="clearfix">
+                                        <dt class="fl">
+                                            <a href="#"><img src="images/tbbanner01.jpg"/></a>
+                                        </dt>
+                                        <dd class="name">
+                                            <span>大飞随笔</span>
+                                        </dd>
+                                        <dd class="time">
+                                            <span>2017.02.27 09:15</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <p>
+                                    我也看过罗辑思维，但是我最近对道德绑架这个词有了新的认识，不知道作者有没有思考过，为什么会有道德的存在，而且从古至今都有？人类的社会需要道德维持，而且这也是人们彰显自己存在价值的方式，也就是说，你是有追求道德的强烈动机。追逐利益是人的本性，同样追求更高的道德也是人的本性，这两个处在微妙的博弈中，远非一个简单的道德绑架可以说清楚。单纯的以经济学观点看世界，会很狭隘
+                                </p>
+                                <div class="tool-btn">
+                                    <a href="#"><i class="fa fa-edit"></i>回复</a>
+                                </div>
+                            </div>
+                            <div class="comment-sub-list">
+                                <div class="comment-sub">
+                                    <p>
+                                        <a href="#">你先走:</a>
+                                        <span><span><a href="/users/6bc676efa44a" class="maleskine-author" target="_blank" data-user-slug="6bc676efa44a">@大飞随笔</a> 很好，看得出来回复很有深度。我认为，作者也说了道德是想像中的情况，我们需要研究实际情况；还有，人做事的动机之一就是道德动机，人具体如何决策，是衡量多个动机之后的决定。文中所提的是以经济学的眼光去看问题，并非局限于经济领域看问题。</span></span>
+                                    </p>
+                                    <div class="sub-tool-btn">
+                                        <span>2017.02.27 09:40</span>
+                                        <a href="#"><i class="fa fa-edit"></i>回复</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--返回顶部按钮-->
+    <div class="back-top" id="backTop">
+        <i title="返回顶部/Back Top" class="fa fa-angle-up" aria-hidden="true"></i>
+        <p class="back-top-tip">回到顶部</p>
+    </div>
+    <!--底部-->
+    <div class="footer"></div>
+<script src="js/blogmain.js"></script>
+</body>
+</html>

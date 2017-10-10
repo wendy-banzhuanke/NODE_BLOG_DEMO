@@ -1,0 +1,95 @@
+body{
+    min-width: 1190px;
+}
+.wrap{
+    margin: 0 auto;
+    width: 80%;
+}
+/*top*/
+.top{
+    height: 40px;
+    line-height: 40px;
+    background-color: #2b2b2b;
+}
+.top > span{
+    font-size: 14px;
+    color: #ffffff;
+}
+.container .leftmenu{
+    height: 800px;
+    padding: 50px 40px 200px 40px;
+    background-color: #8a189f;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.container .leftmenu a{
+    color: #ffffff;
+}
+.container .leftmenu i{
+    display: inline-block;
+    width: 36px;
+    height:36px;
+    color: #ffffff;
+    font-size: 1.5em;
+}
+.container .center{
+    margin-top: 50px;
+    width: 80%;
+}
+.container .center .title{
+    border-bottom: 1px dashed #8a189f;
+    text-align: left;
+    padding-bottom: 10px;
+}
+.container .center .title > i{
+    color: #8a189f;
+    font-weight: bold;
+    font-size: 16px;
+}
+.container .center .article{
+    margin-top: 50px;
+}
+.container .center .group > label{
+    float: left;
+    padding: 5px;
+    width: 100px;
+    font-weight: bold;
+    color: #2b2b2b;
+    display: inline-block;
+    line-height: 40px;
+    height: 40px;
+}
+.container .center .group > input , .container .center .group  select{
+    float: left;
+    padding-left:5px;
+    padding-right: 5px;
+    width: 500px;
+    height: 40px;
+    line-height: 40px;
+    border:1px solid #d4d4d4;
+    color: #373737;
+    font-size: 14px;
+    background-color: #ffffff;
+
+}
+.container .center .btn-group{
+    height: 160px;
+    text-align: center;
+    margin-top: 50px;
+}
+.container .center .btn-group .btn-publish,.container .center .btn-group .btn-back{
+    display: inline-block;
+    width: 160px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    background-color: #8a189f;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+}

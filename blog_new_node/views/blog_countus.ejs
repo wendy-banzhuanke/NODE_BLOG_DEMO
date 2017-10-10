@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我</title>
+    <link rel="stylesheet" href="/stylesheets/reset.css"/>
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/blog.css"/>
+</head>
+<body>
+    <div class="container clearfix wrap countus-wrap">
+        <div class="menu-countus">
+            <div class="menu-countus-context clearfix">
+                <div class="fl">
+                    <h3>联系我</h3>
+                    <div>
+                        <p>高手技术交流群：<i>340937666</i></p>
+                        <!--<p>博主邮箱：<i>13522225365@163.com</i></p>-->
+                    </div>
+                </div>
+                <div class="fr">
+                    <h3>发送邮件给博主</h3>
+                    <form method="post" action="/contactme/sendemail">
+                       <ul>
+                           <li>
+                               <p>Your-名字</p>
+                               <input type="text" name="emial_name" placeholder="Your Name"/>
+                           </li>
+                           <li>
+                               <p>Your-邮箱地址</p>
+                               <input type="text" name="email_address" placeholder="Your Email"/>
+                           </li>
+                           <li>
+                               <p>邮件内容</p>
+                               <textarea type="text" name="email_context" placeholder="Your Context"></textarea>
+                           </li>
+                           <li>
+                               <input onclick="sendMail();" type="submit" value="提&nbsp;&nbsp;交"/>
+                           </li>
+                       </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

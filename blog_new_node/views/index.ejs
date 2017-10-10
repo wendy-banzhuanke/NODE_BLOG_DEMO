@@ -1,0 +1,116 @@
+<% include header.ejs %>
+<!--中间内容区域-->
+<div class="container index">
+  <div class="wrap clearfix">
+    <div class="fl main">
+      <!--banner start-->
+      <div class="banner" id="banner">
+        <div class="banner-inner" style="left:0px" id="bannerList">
+          <div class="item">
+            <a href="#" target="_blank">
+              <img src="images/tbbanner01.jpg" alt="这是图一"/>
+            </a>
+          </div>
+          <div class="item">
+            <a href="#" target="_blank">
+              <img src="images/tbbanner02.jpg" alt="这是图二"/>
+            </a>
+          </div>
+          <div class="item">
+            <a href="#" target="_blank">
+              <img src="images/tbbanner03.jpg" alt="这是图三"/>
+            </a>
+          </div>
+        </div>
+        <div class="banner-slide" id="handle">
+          <span class="on"></span>
+          <span></span>
+          <span></span>
+        </div>
+        <a href="#" id="leftBtn" class="banner-direction-btn left">&lt;</a>
+        <a href="#" id="rightBtn" class="banner-direction-btn right">&gt;</a>
+      </div>
+      <!--banner end-->
+      <div class="list-article" id="listArticle">
+        <input type="hidden" id="pageNo" value="<%= pageNo %>"/>
+        <input type="hidden" id="pageSize" value="<%= pageSize %>"/>
+        <input type="hidden" id="blogTypeId" value="<%= blogTypeId %>"/>
+
+        <% blogListRes.forEach(function (blres,index) { %>
+          <dl class="clearfix">
+              <!--<dt class="fr">
+                  <a href="#" target="_blank"><img src="images/tbbanner01.jpg" alt="文章标题"></a>
+              </dt>-->
+              <dd class="author clearfix">
+                  <a href="#" target="_blank"><img src="images/author01.jpg" alt="文章作者"></a>
+                  <div class="name">
+                      <a onclick="bolgReadNum(<%= blres.id %>);"  href="/blog/blogDetails/<%= blres.id %>" target="_blank"><%= blres.blog_author %></a>
+                      <span class="time"><%= moment(blres.blog_time).format("YYYY-MM-DD HH:mm:ss") %></span>
+                  </div>
+              </dd>
+              <dd class="title">
+                  <a onclick="bolgReadNum(<%= blres.id %>);"  href="/blog/blogDetails/<%= blres.id %>" target="_blank"><%= blres.blog_name %></a>
+              </dd>
+              <dd class="article">
+                  <p class="article-p">
+                  </p>
+                  <div class="article-p2">
+                      <%- blres.blog_context %>
+                  </div>
+              </dd>
+              <dd class="meta">
+                  <a onclick="bolgReadNum(<%= blres.id %>);"  href="/blog/blogDetails/<%= blres.id %>" target="_blank">
+                    <i class="fa fa-eye" aria-hidden="true"></i><%= blres.blog_look %>
+                  </a>
+                  <a onclick="bolgReadNum(<%= blres.id %>);"  href="/blog/blogDetails/<%= blres.id %>" target="_blank">
+                    <i class="fa fa-comments" aria-hidden="true"></i><%= blres.blog_comment %>
+                  </a>
+                  <span>
+                      <i class="fa fa-heart" aria-hidden="true"></i><%= blres.blog_zan %>
+                  </span>
+                  <span>
+                      <i class="fa fa-jpy" aria-hidden="true"></i><%= blres.blog_reward %>
+                  </span>
+              </dd>
+          </dl>
+        <% }) %>
+
+      </div>
+      <div class="add-more"  id="addMoreDiv" >
+        <a id="addMore" href="#">加载更多</a>
+      </div>
+    </div>
+    <div class="fr aside">
+      <div class="board">
+        <a href="#" target="_blank">
+          <img src="images/aside-01-01.png" alt="新上榜" />
+        </a>
+        <a href="#" target="_blank">
+          <img src="images/aside-01-02.png" alt="7日热门" />
+        </a>
+        <a href="#" target="_blank">
+          <img src="images/aside-01-03.png" alt="7日热门" />
+        </a>
+      </div>
+      <div class="article-type">
+          <% blogTypeRes.forEach(function (btres,index) { %>
+              <a href="/blog/blogType/<%= btres.id %>" target="_blank">
+                <img src="images/typebg01.jpg" alt="css" />
+                <p><%= btres.typename %></p>
+                <div class="mask"></div>
+              </a>
+        <% }) %>
+
+      </div>
+      <div class="music">
+
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    window.onload = function () {
+        bannerSlide();
+    }
+</script>
+<% include footer.ejs %>
